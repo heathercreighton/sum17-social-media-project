@@ -18,10 +18,11 @@ module TweetsHelper
 	        end
 	         tweet_tag = TweetTag.create(tweet_id: tweet.id, tag_id: tag.id)
 	         message_arr[index] = "<a href= '/tag_tweets?id=#{tag.id}'>#{word}</a>"
+	      
+	    			tweet.message =  message_arr.join(" ")
 	      end    
 			end
 
-	    tweet.message =  message_arr.join(" ")
 	    return tweet
 	 		
 	end 		

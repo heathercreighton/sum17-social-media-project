@@ -3,10 +3,6 @@ Rails.application.routes.draw do
    
    # post '/' => "epicenter#feed", as: "root"
 
-
-   post 'epicenter/epi_tweet'
-   get 'tag_tweets' => 'epicenter#tag_tweets'
- 
   get 'show_user' => 'epicenter#show_user'
 
   get 'now_following' => 'epicenter#now_following'
@@ -14,6 +10,9 @@ Rails.application.routes.draw do
   get 'unfollow' =>'epicenter#unfollow'
 
   get 'all_users' => 'epicenter#all_users'
+
+  post 'epicenter/epi_tweet'
+  get 'tag_tweets' => 'epicenter#tag_tweets'
 
   resources :tweets
   devise_for :users
