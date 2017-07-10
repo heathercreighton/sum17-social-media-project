@@ -4,8 +4,8 @@
     <title>Sum17Twitter</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -72,6 +72,8 @@
 					  	<p><strong><%= link_to current_user.name, show_user_path(id: current_user.id) %></strong> @<%= current_user.username %></p>
 					  	<p>Location: <strong><%= current_user.location %></strong></p>
 					  	<p> Following: <strong> <%= current_user.following.length %></strong></p>
+              <p><strong><%= link_to "Followers",followers_path(id: current_user.id) %>: <%= total_followers(current_user) %></strong></p>
+
 				  	</center>
 		
 				  </div>

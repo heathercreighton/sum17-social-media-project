@@ -2,7 +2,10 @@ class EpicenterController < ApplicationController
 
 	before_action :authenticate_user!
 
-	include TweetsHelper
+
+  helper :all
+	# include TweetsHelper
+ #  include ApplicationHelper
   
   def feed
   	@following_tweets = []
@@ -22,15 +25,15 @@ class EpicenterController < ApplicationController
   def now_following
   	current_user.following.push(params[:id].to_i)
   	current_user.save
-
-    redirect_to show_user_path(id: params[:id])
+    redirect_back(fallback_location: root_path)
+    # redirect_to show_user_path(id: params[:id])
   end
 
   def unfollow
   	current_user.following.delete(params[:id].to_i)
   	current_user.save
-
-  	redirect_to show_user_path(id: params[:id]) 
+    redirect_back(fallback_location: root_path)
+  	# redirect_to show_user_path(id: params[:id]) 
   end
 
 
@@ -51,10 +54,6 @@ class EpicenterController < ApplicationController
     redirect_to root_path
 
 
-
-
-
-
   end  
 
 
@@ -68,4 +67,33 @@ class EpicenterController < ApplicationController
   def tag_tweets
   	@tag = Tag.find(params[:id])
 	end
+
+
+
+  def following
+    @user = User.find(params[:id])
+
+    @users =[]
+
+    User.all.each do |user|
+      if @user.following.include?(user.id)
+        @users.push(user)
+      end
+    end   
+
+  end   
+
+
+  def followers
+    @user =  User.find(params[:id])
+    @users = []
+
+    User.all.each do |user|
+      if user.following.include?(@user.id)
+        @users.push(user)
+      end
+    end
+    @total = @users.length
+  end
+
 end
