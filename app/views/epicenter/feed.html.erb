@@ -18,12 +18,13 @@
     <%= image_tag tweet.user.avatar.thumb, class: "img-circle"%>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"><%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> @<%= tweet.user.username %></h4>
+    <h5 class="media-heading"><%= link_to tweet.user.name, show_user_path(id: tweet.user.id) %> • <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %> <%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at > 86400 %>  </h5>
+    <p> @<%= tweet.user.username %></p>
     <p><em> Posted <%= time_ago_in_words(tweet.created_at) %> ago...</em></p>
     <p><%= tweet.message.html_safe %></p>
     <% if current_user.id == tweet.user.id %>
-		        	<p><%= link_to 'Show', tweet %> |
-		        	<%= link_to 'Edit', edit_tweet_path(tweet) %> |
+		        	
+		       
 		        	<%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 	   <% end %>	
   </div>

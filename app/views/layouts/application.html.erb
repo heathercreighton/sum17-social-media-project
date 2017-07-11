@@ -72,7 +72,7 @@
 					  	<p><strong><%= link_to current_user.name, show_user_path(id: current_user.id) %></strong> @<%= current_user.username %></p>
 					  	<p>Location: <strong><%= current_user.location %></strong></p>
 					  	<p> Following: <strong> <%= current_user.following.length %></strong></p>
-              <p><strong><%= link_to "Followers",followers_path(id: current_user.id) %>: <%= total_followers(current_user) %></strong></p>
+              <p><strong><%= link_to "Followers",followers_path(id: current_user.id) %>: <%= total_followers(current_user.id) %></strong></p>
 
 				  	</center>
 		

@@ -29,10 +29,10 @@
 <div class="well">
 	<% @user.tweets.each do |tweet| %>
 		<div class="well inner">
-	   
-	        <p>@<%= @user.username %></p>
-	        <p><em> Posted <%= time_ago_in_words(tweet.created_at) %> ago...</em></p>
-		<p><%= tweet.message.html_safe %></p>
+	   	<p><em> <%= @user.name %> • <%= time_ago_in_words(tweet.created_at) if Time.now - tweet.created_at < 86400 %> <%= tweet.created_at.strftime('%b%e') if Time.now - tweet.created_at > 86400 %> </em></p>
+	    <p>@<%= @user.username %></p>
+	        
+			<p><%= tweet.message.html_safe %></p>
 	  </div>  
 	<% end %>
 </div>
