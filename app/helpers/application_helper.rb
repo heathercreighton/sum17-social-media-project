@@ -12,4 +12,12 @@ module ApplicationHelper
 		return total
 	end			
 
+
+	def total_tweets(user_id)
+		
+		tweets =[]
+		tweets = Tweet.where(user_id: user_id)
+		return tweets.length
+
+	end	
 end

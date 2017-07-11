@@ -3,9 +3,9 @@ class EpicenterController < ApplicationController
 	before_action :authenticate_user!
 
 
-  
-	 include TweetsHelper
-   include ApplicationHelper
+  helper :all
+	 # include TweetsHelper
+  #  include ApplicationHelper
   
   def feed
   	@following_tweets = []

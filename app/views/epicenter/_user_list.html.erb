@@ -10,7 +10,7 @@
 					  	<p>About: <%= user.bio %></p>
 					  	<p><%= link_to "Following:",following_path(id: user.id) %> <strong> <%= user.following.length %></strong></p>
 					  	<p><strong><%= link_to "Followers",followers_path(id: user.id) %>: <%= total_followers(user.id) %></strong></p>
-
+							<p><strong><%= link_to "Tweets", show_user_path(id: user.id) %> : <%= total_tweets(user.id) %></strong></p> 
 				 
 
 				  	<p>
@@ -19,6 +19,7 @@
 					    <% else %>
 					        <% if current_user.id != user.id %>
 						    <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-primary" %>
+
 						    
 								<% end %>
 					    <% end %>

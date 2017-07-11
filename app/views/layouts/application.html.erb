@@ -74,6 +74,8 @@
 					  	<p> Following: <strong> <%= current_user.following.length %></strong></p>
               <p><strong><%= link_to "Followers",followers_path(id: current_user.id) %>: <%= total_followers(current_user.id) %></strong></p>
 
+              <p><strong><%= link_to "Tweets", show_user_path(id: current_user.id) %> : <%= total_tweets(current_user.id) %></strong></p>
+
 				  	</center>
 		
 				  </div>
